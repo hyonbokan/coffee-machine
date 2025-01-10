@@ -1,5 +1,7 @@
 package com.example.coffee_machine.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,21 +14,16 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "recipe_ingredient")
-public class RecipeIngredients {
-
+@Table(name = "orders")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @ManyToOne
     @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;
 
-    @ManyToOne
-    @JoinColumn(name = "ingredient_id", nullable = false)
-    private Ingredients ingredients;
-
-    @Column(nullable = false)
-    private int quantity;
+    @Column(name = "order_date", nullable = false)
+    private LocalDateTime orderDate;
 }

@@ -3,10 +3,8 @@ package com.example.coffee_machine.dto;
 import lombok.Data;
 
 @Data
-public class RecipeIngredientsDto {
-    
+public class CoffeeMachineRecipeDto {
     private Long id;
+    private Long coffeeMachineId;
     private Long recipeId;
-    private Long ingredientId;
-    private int quantity;
 }

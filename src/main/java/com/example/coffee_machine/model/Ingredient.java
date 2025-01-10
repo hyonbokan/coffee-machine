@@ -13,9 +13,9 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
+@Table(name = "ingredients")
 @Data
-@Table(name = "recipe")
-public class Recipe {
+public class Ingredient {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +24,9 @@ public class Recipe {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    @Column(nullable = false)
+    private int quantity;
+
+    @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL)
     private List<RecipeIngredient> recipeIngredients;
-
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
-    private List<Order> orders;
-
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
-    private List<CoffeeMachineRecipe> coffeeMachineRecipes;
 }
