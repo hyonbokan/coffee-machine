@@ -1,29 +1,46 @@
 package com.example.coffee_machine.controller;
 
-import com.example.coffee_machine.dto.OrdersDto;
+import com.example.coffee_machine.dto.OrderDto;
+import com.example.coffee_machine.model.Order;
+import com.example.coffee_machine.model.Recipe;
 import com.example.coffee_machine.service.OrdersService;
 
+import io.micrometer.core.ipc.http.HttpSender.Response;
 import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 
 @RestController("/order")
 @AllArgsConstructor
 public class OrdersController {
 
-    private OrdersService orderService;
-
-    // public OrderController(OrderService orderService) {
-    //     this.orderService = orderService;
-    // }
+    private final OrdersService orderService;
 
     @PostMapping("/create")
-    public String createOrder(@RequestBody OrdersDto orderDto) {
-        // orderService.createOrder(orderDto);
-        //TODO: process POST request
-        return "";
+    public ResponseEntity<OrderDto> createOrder(@RequestParam Long recipeId) {
+        Order order = orderService.createOrder(recipeId);
+
+        OrderDto orderDto = new OrderDto();
+        orderDto.setId(order.getId());
+        orderDto.setRecipeId(order.getRecipe().getId());
+        orderDto.setRecipeName(order.getRecipe().getName());
+        orderDto.setOrderDate(order.getOrderDate());
+
+        ResponseEntity.status(HttpStatus.CREATED).body(orderDto);
+    }
+
+    @GetMapping("/statistics/most-popular")
+    public ResponseEntity<Recipe> getMostPopularRecipe() {
+        // Implementation later
+        return ResponseEntity.ok(null);
     }
 }

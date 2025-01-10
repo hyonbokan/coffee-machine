@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.coffee_machine.model.Recipe;
 
+
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Long>{
-    
     Optional<Recipe> findByName(String name);
 }

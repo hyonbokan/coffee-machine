@@ -8,12 +8,14 @@ import com.example.coffee_machine.service.StatisticsService;
 
 import lombok.AllArgsConstructor;
 
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/stats")
 public class StatisticsController {
 
-    private StatisticsService statisticsService;
+    private final StatisticsService statisticsService;
+    // private IngredientService IngredientService;
 
     // public StatisticsController(StatisticsService statisticsService) {
     //     this.statisticsService = statisticsService;
@@ -29,5 +31,9 @@ public class StatisticsController {
         // statisticsService.findMostPopularRecipe();
         return new String();
     }
-    
+
+    @GetMapping("/ingredients")
+    public String getMethodName() {
+        return new String();
+    }   
 }
