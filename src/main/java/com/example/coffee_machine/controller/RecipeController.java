@@ -5,9 +5,12 @@ import com.example.coffee_machine.service.RecipeService;
 import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @AllArgsConstructor
@@ -15,15 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RecipeController {
 
     private final RecipeService recipeService;
-
-    // public RecipeController(RecipeService recipeService) {
-    //     this.recipeService = recipeService;
-    // }
     
     @PostMapping("/create")
-    public String createRecipe(@RequestBody RecipeDto recipeDto) {
-        // recipeService.createRecipe(recipeDto);
-        //TODO: process POST request
-        return "";
+    public ResponseEntity<RecipeDto> createRecipe(@RequestBody RecipeDto recipeDto) {
+        RecipeDto newRecipe = recipeService.createRecipe(recipeDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newRecipe);
     }
 }

@@ -35,12 +35,6 @@ public class OrdersController {
         orderDto.setRecipeName(order.getRecipe().getName());
         orderDto.setOrderDate(order.getOrderDate());
 
-        ResponseEntity.status(HttpStatus.CREATED).body(orderDto);
-    }
-
-    @GetMapping("/statistics/most-popular")
-    public ResponseEntity<Recipe> getMostPopularRecipe() {
-        // Implementation later
-        return ResponseEntity.ok(null);
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderDto);
     }
 }
