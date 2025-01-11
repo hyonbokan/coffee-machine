@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.coffee_machine.dto.MostPopularDrinkDto;
-import com.example.coffee_machine.dto.RecipeDto;
 import com.example.coffee_machine.service.StatisticsService;
 
 import lombok.AllArgsConstructor;

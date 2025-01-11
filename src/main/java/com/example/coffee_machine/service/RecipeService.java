@@ -44,7 +44,7 @@ public class RecipeService {
 
         for (IngredientDto ingredientDto : recipeDto.getIngredients()) {
             Ingredient ingredient = ingredientRepository.findById(ingredientDto.getId())
-                .orElseThrow(() -> new RuntimeException(ingredientDto.getName() + "not found."));
+                .orElseThrow(() -> new RuntimeException("Ingredient not found."));
             
             if (ingredientDto.getQuantity() <= 0) {
                 throw new RuntimeException("Insuffient number of " + ingredient.getName());
@@ -65,6 +65,7 @@ public class RecipeService {
             .map(ri -> {
                 IngredientDto dto = new IngredientDto();
                 dto.setId(ri.getIngredient().getId());
+                dto.setName(ri.getIngredient().getName());
                 dto.setQuantity(ri.getQuantity());
                 return dto;
             }).collect(Collectors.toList());

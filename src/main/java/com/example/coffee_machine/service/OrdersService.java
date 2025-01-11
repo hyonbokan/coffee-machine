@@ -6,9 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.coffee_machine.model.Order;
 import com.example.coffee_machine.model.Recipe;
-import com.example.coffee_machine.repository.IngredientRepository;
 import com.example.coffee_machine.repository.OrderRepository;
-import com.example.coffee_machine.repository.RecipeRepository;
 
 import lombok.AllArgsConstructor;
 
