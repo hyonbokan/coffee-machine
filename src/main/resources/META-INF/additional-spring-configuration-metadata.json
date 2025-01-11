@@ -1,0 +1,11 @@
+{
+    "properties": [
+      {
+        "name": "nager.api.url",
+        "type": "java.lang.String",
+        "description": "Base URL for the Nager.Date API.",
+        "defaultValue": "https://date.nager.at/Api"
+      }
+    ]
+  }
+  
