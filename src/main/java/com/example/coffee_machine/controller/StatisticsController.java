@@ -1,9 +1,15 @@
 package com.example.coffee_machine.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.coffee_machine.dto.MostPopularDrinkDto;
+import com.example.coffee_machine.dto.RecipeDto;
 import com.example.coffee_machine.service.StatisticsService;
 
 import lombok.AllArgsConstructor;
@@ -15,25 +21,14 @@ import lombok.AllArgsConstructor;
 public class StatisticsController {
 
     private final StatisticsService statisticsService;
-    // private IngredientService IngredientService;
-
-    // public StatisticsController(StatisticsService statisticsService) {
-    //     this.statisticsService = statisticsService;
-    // }
     
     @GetMapping
-    public String getStats() {
-        return new String();
+    public ResponseEntity<List<Map<String, Object>>> getOrderStatistics() {
+        return ResponseEntity.ok(statisticsService.getOrderStatistics());
     }
 
     @GetMapping("/most-popular")
-    public String getMostPopularRecipe() {
-        // statisticsService.findMostPopularRecipe();
-        return new String();
+    public ResponseEntity<MostPopularDrinkDto> getMostPopularRecipe() {
+        return ResponseEntity.ok(statisticsService.getMostPopularRecipe());
     }
-
-    @GetMapping("/ingredients")
-    public String getMethodName() {
-        return new String();
-    }   
 }
